@@ -1,38 +1,37 @@
-import { useEffect, useState } from 'react';
-import { loadDatabaseFromCSV } from './db';
-import { searchPeople } from './utils/search';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [rows, setRows] = useState([]);
   const [query, setQuery] = useState('');
-  const [db, setDb] = useState(null);
 
   useEffect(() => {
-    const load = async () => {
-      const database = await loadDatabaseFromCSV('/data/people.csv');
-      setDb(database);
-      const res = database.exec('SELECT * FROM people');
-      if (res.length > 0) {
-        setRows(res[0].values);
+    const loadAll = async () => {
+      try {
+        const res = await axios.get('/persons');
+        setRows(res.data); // tableau de personnes
+      } catch (err) {
+        console.error('Erreur en chargeant les personnes:', err);
       }
     };
-    load();
+    loadAll();
   }, []);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     const input = e.target.value;
     setQuery(input);
 
-    if (db) {
-      const results = searchPeople(db, input);
-      setRows(results);
+    try {
+      const res = await axios.get('/persons/search', { params: { query: input } });
+      setRows(res.data);
+    } catch (err) {
+      console.error('Erreur lors de la recherche:', err);
     }
   };
 
   return (
     <div style={{ padding: '2rem' }}>
       <h1>Recherche dans la base de personnes</h1>
-
       <input
         type="text"
         value={query}
@@ -40,27 +39,24 @@ function App() {
         placeholder="Ex: PHI"
         style={{ padding: '0.5rem', width: '300px', fontSize: '1rem' }}
       />
-
       <table border="1" cellPadding="5" style={{ marginTop: '1rem' }}>
         <thead>
           <tr>
             <th>ID</th>
-            <th>Prénom</th>
             <th>Nom</th>
             <th>Email</th>
             <th>Genre</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map(([id, first, last, email, gender]) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{first}</td>
-              <td>{last}</td>
-              <td>{email}</td>
-              <td>{gender}</td>
+          {Array.isArray(rows) ? rows.map(person => (
+            <tr key={person.id}>
+              <td>{person.id}</td>
+              <td>{person.name}</td>
+              <td>{person.email}</td>
+              <td>{person.gender}</td>
             </tr>
-          ))}
+          )) : null}
         </tbody>
       </table>
     </div>
