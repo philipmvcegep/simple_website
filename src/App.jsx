@@ -1,33 +1,23 @@
 import { useEffect, useState } from 'react';
 import { loadDatabaseFromCSV } from './db';
 import { searchPeople } from './utils/search';
+import axios from 'axios';
+
 
 function App() {
-  const [rows, setRows] = useState([]);
-  const [query, setQuery] = useState('');
-  const [db, setDb] = useState(null);
+  const [input, setInput ] = useState("");
+  const handleInput = (e) => setInput(e.target.value);
 
+  const [data, setData] = useState([]);
   useEffect(() => {
-    const load = async () => {
-      const database = await loadDatabaseFromCSV('/data/people.csv');
-      setDb(database);
-      const res = database.exec('SELECT * FROM people');
-      if (res.length > 0) {
-        setRows(res[0].values);
-      }
-    };
-    load();
-  }, []);
-
-  const handleSearch = (e) => {
-    const input = e.target.value;
-    setQuery(input);
-
-    if (db) {
-      const results = searchPeople(db, input);
-      setRows(results);
-    }
-  };
+    axios.get(`http://localhost:8080/api/persons/search?name=${input}`) 
+      .then((response) => {
+        setData(response.data);})
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des données (404) :", error);
+      });
+  }, [input]);
+  
 
   return (
     <div style={{ padding: '2rem' }}>
@@ -35,8 +25,8 @@ function App() {
 
       <input
         type="text"
-        value={query}
-        onChange={handleSearch}
+        value={input}
+        onChange={handleInput}
         placeholder="Ex: PHI"
         style={{ padding: '0.5rem', width: '300px', fontSize: '1rem' }}
       />
