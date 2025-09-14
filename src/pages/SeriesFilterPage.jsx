@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/Series.css";
+import breaking from "../assets/images/breaking.jpg";
+import family from "../assets/images/family.jpg";
+import dark from "../assets/images/dark.jpg";
+import super2 from "../assets/images/super2.jpg";
+import breakingpoint from "../assets/images/breakingpoint.jpg";
+import family1 from "../assets/images/family1.jpg";
+import hah from "../assets/images/hah.jpg";
+import hs from "../assets/images/hs.jpg";
+import superaction from "../assets/images/superaction.jpg";
 
 export default function SeriesFilterPage() {
   const API = "http://localhost:8585/series";
@@ -9,6 +18,18 @@ export default function SeriesFilterPage() {
   const [searchName, setSearchName] = useState("");
   const [activeGenres, setActiveGenres] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const imagesMap = {
+    "Breaking Bad": breaking,
+    "hah": hah,
+    "Family Secrets": family,
+    "Dark": dark,
+    "Action Super 2": super2,
+    "Breaking Point": breakingpoint,
+    "Family": family1,
+    "High School": hs,
+    "Super Action": superaction,
+  };
 
   useEffect(() => {
     const fetchSeries = async () => {
@@ -38,11 +59,10 @@ export default function SeriesFilterPage() {
   });
 
   return (
-    <div className="series-page">
-
+    <div className="series-page-container">
       <header className="navbar">
         <div className="navbar-left">
-          <h1 className="logo">Series</h1>
+          <h1 className="logo" style={{ color: 'red' }}>Series</h1>
           <nav className="nav-links">
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
@@ -58,53 +78,63 @@ export default function SeriesFilterPage() {
             onChange={(e) => setSearchName(e.target.value)}
             className="search-input"
           />
-          <button className="search-btn">Recherche</button>
         </div>
       </header>
 
-      <h2>Filtrer les séries</h2>
+      <div className="filter-layout">
+        <aside className="filters">
+          <h3 style={{ color: 'red' }}>Filtres de recherche</h3>
+          <div className="genre-buttons">
+            {genres.map((genre) => (
+              <button
+                key={genre}
+                className="btn-genre"
+                onClick={() => addGenre(genre)}
+              >
+                {genre}
+              </button>
+            ))}
+          </div>
+          <div className="active-genres">
+            {activeGenres.map((genre) => (
+              <span 
+                key={genre}
+                className="badge"
+                onClick={() => removeGenre(genre)}
+              >
+                {genre} ✕
+              </span>
+            ))}
+          </div>
+        </aside>
 
-      <div className="genre-buttons mb-2">
-        {genres.map((genre) => (
-          <button
-            key={genre}
-            className="btn btn-outline-light me-2 mb-2"
-            onClick={() => addGenre(genre)}
-          >
-            {genre}
-          </button>
-        ))}
+        <main className="series-list">
+          {errorMsg && <p className="text-danger">{errorMsg}</p>}
+          {filteredSeries.length > 0 ? (
+            filteredSeries.map((serie) => (
+              <div key={serie.id} className="serie-card">
+                <div className="poster">
+                  <img 
+                    src={imagesMap[serie.title]} 
+                    alt={serie.title} 
+                  />
+                </div>
+                <div className="info">
+                  <h3 style={{ color: 'red' }}>{serie.title}</h3>
+                  <p><strong>Genre:</strong> {serie.genre}</p>
+                  <p><strong>Épisodes:</strong> {serie.nbEpisodes}</p>
+                  <p><strong>Note:</strong> {serie.note}</p>
+                  <p>{serie.description}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>Aucune série trouvée.</p>
+          )}
+        </main>
       </div>
 
-      <div className="active-genres mb-3">
-        {activeGenres.map((genre) => (
-          <span
-            key={genre}
-            className="badge bg-primary me-2 mb-2"
-            style={{ cursor: "pointer" }}
-            onClick={() => removeGenre(genre)}
-          >
-            {genre} ✕
-          </span>
-        ))}
-      </div>
-
-      {errorMsg && <p className="text-danger">{errorMsg}</p>}
-
-      <div className="series-list">
-        {filteredSeries.length > 0 ? (
-          filteredSeries.map((serie) => (
-            <div key={serie.id} className="serie-card">
-              <h3>{serie.title}</h3>
-              <p>Genre: {serie.genre}</p>
-              <p>Nombre d'épisodes: {serie.nbEpisodes}</p>
-              <p>Note: {serie.note}</p>
-            </div>
-          ))
-        ) : (
-          <p>Aucune série trouvée.</p>
-        )}
-      </div>
+    
     </div>
   );
 }
