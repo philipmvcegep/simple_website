@@ -19,20 +19,21 @@ export default function Accueil() {
             <nav className="nav-links">
                 <a href="/">Accueil</a>
                 <a href="/series">Séries</a>
+                <a href="/historique">Historique</a>
                 <a href="/about">À propos</a>
             </nav>
         </div>
         <div className="navbar-right">
-          <input
+          {/* <input
             type="text"
-            placeholder="Rechercher..."
+            placeholder="RechercherS..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="search-input"
             
-          />
-          <button className="search-btn">Recherche</button>
-        </div>
+          /> */}
+{/*           <button className="search-btn">Recherche</button>
+ */}        </div>
       </header>
 
       <main className="main-content">

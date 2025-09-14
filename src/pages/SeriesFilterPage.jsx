@@ -46,6 +46,7 @@ export default function SeriesFilterPage() {
           <nav className="nav-links">
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
+            <a href="/historique">Historique</a>
             <a href="/about">À propos</a>
           </nav>
         </div>
