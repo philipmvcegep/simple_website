@@ -48,7 +48,7 @@ export default function Accueil() {
             <a href="/about">À propos</a>
           </nav>
         </div>
-        <div className="navbar-right">
+        {/* <div className="navbar-right">
           <input
             type="text"
             placeholder="Rechercher..."
@@ -57,12 +57,12 @@ export default function Accueil() {
             className="search-input"
           />
           <button className="search-btn">Recherche</button>
-        </div>
+        </div> */}
       </header>
 
       <main className="main-content">
-        <h2>Bienvenue sur Series</h2>
-        <p>Découvrez vos films et séries préférés!</p>
+        <h2 style={{fontFamily: 'Arial Black'}}>Bienvenue sur Series</h2>
+        <p style={{ color: 'Red', fontFamily: 'Arial Black'}}>Découvrez vos films et séries préférés!</p>
       </main>
 
       <div>
@@ -80,7 +80,7 @@ export default function Accueil() {
       </div>
 
       <div className="bibliotheque">
-        <h2>Populaires</h2>
+        <h2 style={{ color: 'Red'}}>Populaires</h2>
         <div className="grille">
           {filmsPopulaires.map((film) => (
             <div key={film.id} className="carte">
@@ -92,7 +92,7 @@ export default function Accueil() {
       </div>
 
       <div className="bibliotheque">
-        <h2>Séries</h2>
+        <h2 >Séries</h2>
         <div className="grille">
           {seriesSuspense.map((serie) => (
             <div key={serie.id} className="carte">
@@ -104,7 +104,7 @@ export default function Accueil() {
       </div>
 
       <div className="bibliotheque">
-        <h2>Comédies</h2>
+        <h2 style={{ color: 'Red'}}>Comédies</h2>
         <div className="grille">
           {comedies.map((comedy) => (
             <div key={comedy.id} className="carte">
