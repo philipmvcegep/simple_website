@@ -1,0 +1,71 @@
+/* Accueil.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #41757c; 
+}
+
+.logo {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 28px;
+  color: #000;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 6px 12px;
+  border-radius: 4px 0 0 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 200px;
+}
+
+.search-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.main-content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.carousel-item {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-item img {
+  max-height: 700px;    /* limite maximale pour garder les images belles */
+  object-fit: contain;  /* garde l'image entière */
+  display: block;
+  margin: 0 auto;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  width: 30px;
+  height: 30px;
+  border: solid rgb(0, 0, 0) 2px;
+  border-width: 0 3px 3px 0;
+  padding: 10px;
+}
+.carousel-control-prev-icon {
+  transform: rotate(135deg);
+}
+
+.carousel-control-next-icon {
+  transform: rotate(-45deg);
+}
