@@ -12,10 +12,15 @@ export default function Accueil() {
   const [search, setSearch] = useState("");
 
   return (
-    <div>
+    <div className="accueil-container">
       <header className="navbar">
         <div className="navbar-left">
           <h1 className="logo">Series</h1>
+            <nav className="nav-links">
+                <a href="/">Accueil</a>
+                <a href="/series">Séries</a>
+                <a href="/about">À propos</a>
+            </nav>
         </div>
         <div className="navbar-right">
           <input
@@ -25,13 +30,13 @@ export default function Accueil() {
             onChange={(e) => setSearch(e.target.value)}
             className="search-input"
           />
-          <button className="search-btn">🔍</button>
+          <button className="search-btn">Recherche</button>
         </div>
       </header>
 
       <main className="main-content">
         <h2>Bienvenue sur Series</h2>
-        <p>Découvrez vos films et séries préférés et restez à jour!</p>
+        <p>Découvrez vos films et séries préférés!</p>
       </main>
 
       <div>
