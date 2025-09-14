@@ -1,13 +1,12 @@
 
 .series-page-container {
-  min-height: 100vh; 
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  background-color: #000; 
-  color: #fff; 
+  background-color: #000;
+  min-height: 100vh;
+  padding: 15px;
+  color: #fff;
   font-family: Arial, sans-serif;
 }
+
 
 .navbar {
   display: flex;
@@ -18,7 +17,12 @@
   flex-wrap: wrap;
 }
 
-
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
 .filter-layout {
   display: flex;
   gap: 20px;
@@ -39,8 +43,7 @@
   padding: 5px 10px;
   background-color: #000000;
   border: 1px solid #000000;
-    border-bottom: 3px solid #912d2d;
-
+  border-bottom: 3px solid #912d2d;
   border-radius: 6px;
   cursor: pointer;
   color: #fff;

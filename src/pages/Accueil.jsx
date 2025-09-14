@@ -20,7 +20,6 @@ export default function Accueil() {
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
-            <a href="/about">À propos</a>
           </nav>
         </div>
         {/* <div className="navbar-right">

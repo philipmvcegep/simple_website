@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../css/Series.css";
+import "../css/Historique.css";
+import breaking from "../assets/images/breaking.jpg";
+import family from "../assets/images/family.jpg";
+import dark from "../assets/images/dark.jpg";
+import super2 from "../assets/images/super2.jpg";
+import breakingpoint from "../assets/images/breakingpoint.jpg";
+import family1 from "../assets/images/family1.jpg";
+import hah from "../assets/images/hah.jpg";
+import hs from "../assets/images/hs.jpg";
+import superaction from "../assets/images/superaction.jpg";
+
 export default function HistoriquePage() {
   const API = "http://localhost:8585/persons";
 
@@ -9,6 +19,18 @@ export default function HistoriquePage() {
   const [history, setHistory] = useState([]);
   const [search, setSearch] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
+  const imagesMap = {
+    "Breaking Bad": breaking,
+    "hah": hah,
+    "Family Secrets": family,
+    "Dark": dark,
+    "Action Super 2": super2,
+    "Breaking Point": breakingpoint,
+    "Family": family1,
+    "High School": hs,
+    "Super Action": superaction,
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -42,17 +64,17 @@ export default function HistoriquePage() {
     <div className="series-page">
       <header className="navbar">
         <div className="navbar-left">
-          <h1 className="logo">Series</h1>
+          <h1 style={{ color: 'Red'}} className="logo">Series</h1>
           <nav className="nav-links">
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
-            <a href="/about">À propos</a>
           </nav>
         </div>
-     </header>
+      </header>
 
-      <h2>Historique des utilisateurs</h2>
+      <h2 style={{ color: 'Red',  font: 'Arial Black'}}>Historique des utilisateurs</h2>
+
       <input
         type="text"
         placeholder="Rechercher un utilisateur..."
@@ -66,7 +88,6 @@ export default function HistoriquePage() {
       <table className="table table-dark table-striped">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Nom</th>
             <th>Email</th>
             <th>Genre</th>
@@ -76,7 +97,6 @@ export default function HistoriquePage() {
         <tbody>
           {filteredUsers.map((u) => (
             <tr key={u.id}>
-              <td>{u.id}</td>
               <td>{u.name}</td>
               <td>{u.email}</td>
               <td>{u.gender}</td>
@@ -100,10 +120,16 @@ export default function HistoriquePage() {
             <div className="series-list">
               {history.map((serie) => (
                 <div key={serie.id} className="serie-card">
-                  <h4>{serie.title}</h4>
-                  <p>Genre: {serie.genre}</p>
-                  <p>Nombre d’épisodes: {serie.nbEpisodes}</p>
-                  <p>Note: {serie.note}</p>
+                  <div className="poster">
+                    <img src={imagesMap[serie.title]} alt={serie.title} />
+                  </div>
+                  <div className="info">
+                    <h3 style={{ color: "red" }}>{serie.title}</h3>
+                    <p><strong>Genre:</strong> {serie.genre}</p>
+                    <p><strong>Épisodes:</strong> {serie.nbEpisodes}</p>
+                    <p><strong>Note:</strong> {serie.note}</p>
+                    <p>{serie.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
