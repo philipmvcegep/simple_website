@@ -1,65 +1,50 @@
-import { useEffect, useState } from 'react';
-import { loadDatabaseFromCSV } from './db';
-import { searchPeople } from './utils/search';
-import './style.css'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
+  const API = "http://localhost:8585/series";
+
+  // Définir les states
   const [rows, setRows] = useState([]);
-  const [query, setQuery] = useState('');
-  const [db, setDb] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const load = async () => {
-      const database = await loadDatabaseFromCSV('/data/people.csv');
-      setDb(database);
-      const res = database.exec('SELECT * FROM people');
-      if (res.length > 0) {
-        setRows(res[0].values);
+    (async () => {
+      try {
+        setErrorMsg("");
+        const res = await axios.get(API);
+        // Vérifie que res.data est bien un tableau
+        setRows(Array.isArray(res.data) ? res.data : []);
+      } catch (err) {
+        console.error("Erreur en chargeant les séries:", err);
+        setErrorMsg("Impossible de charger la liste des séries.");
       }
-    };
-    load();
+    })();
   }, []);
 
-  const handleSearch = (e) => {
-    const input = e.target.value;
-    setQuery(input);
-
-    if (db) {
-      const results = searchPeople(db, input);
-      setRows(results);
-    }
-  };
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Recherche dans la base de personnes</h1>
+    <div style={{ padding: "2rem" }}>
+      <h1>Liste des séries</h1>
 
-      <input
-        type="text"
-        value={query}
-        onChange={handleSearch}
-        placeholder="Ex: PHI"
-        style={{ padding: '0.5rem', width: '300px', fontSize: '1rem' }}
-      />
+      {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
 
-      <table border="1" cellPadding="5" style={{ marginTop: '1rem' }}>
+      <table border="1" cellPadding="5" style={{ marginTop: "1rem" }}>
         <thead>
           <tr>
             <th>ID</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Email</th>
+            <th>Title</th>
             <th>Genre</th>
+            <th>Nb Episodes</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map(([id, first, last, email, gender]) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{first}</td>
-              <td>{last}</td>
-              <td>{email}</td>
-              <td>{gender}</td>
+          {rows.map((serie) => (
+            <tr key={serie.id}>
+              <td>{serie.id}</td>
+              <td>{serie.title}</td>
+              <td>{serie.genre}</td>
+              <td>{serie.nbEpisodes}</td>
+
             </tr>
           ))}
         </tbody>
