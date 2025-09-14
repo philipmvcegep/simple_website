@@ -29,6 +29,7 @@ export default function Accueil() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="search-input"
+            
           />
           <button className="search-btn">Recherche</button>
         </div>
