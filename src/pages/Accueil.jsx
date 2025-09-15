@@ -3,14 +3,14 @@ import "../css/Accueil.css";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
-
+ 
 import breaking from "../assets/images/breaking.jpg";
 import family from "../assets/images/family.jpg";
 import dark from "../assets/images/dark.jpg";
-
+ 
 export default function Accueil() {
   //const [search, setSearch] = useState("");
-
+ 
   return (
     <div className="accueil-container">
       <header className="navbar">
@@ -20,6 +20,7 @@ export default function Accueil() {
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
+            <a href="recommandation">Recommandation</a>
           </nav>
         </div>
         {/* <div className="navbar-right">
@@ -33,12 +34,12 @@ export default function Accueil() {
           <button className="search-btn">Recherche</button>
         </div> */}
       </header>
-
+ 
       <main className="main-content">
         <h2 style={{fontFamily: 'Arial Black'}}>Bienvenue sur Series</h2>
         <p style={{ color: 'Red', fontFamily: 'Arial Black'}}>Découvrez vos films et séries préférés!</p>
       </main>
-
+ 
       <div>
         <Carousel>
           <Carousel.Item>
@@ -52,7 +53,7 @@ export default function Accueil() {
           </Carousel.Item>
         </Carousel>
       </div>
-
+ 
       <div className="bibliotheque">
         <h2 style={{ color: 'Red'}}>Populaires</h2>
         <div className="grille">
@@ -65,7 +66,7 @@ export default function Accueil() {
         </div>
       </div>
   <hr className="hr hr-blurry" />
-
+ 
       <div className="bibliotheque">
         <h2 >Séries</h2>
         <div className="grille">
@@ -78,7 +79,7 @@ export default function Accueil() {
         </div>
       </div>
         <hr className="hr hr-blurry" />
-
+ 
       <div className="bibliotheque">
         <h2 style={{ color: 'Red'}}>Comédies</h2>
         <div className="grille">
@@ -93,3 +94,4 @@ export default function Accueil() {
     </div>
   );
 }
+ 

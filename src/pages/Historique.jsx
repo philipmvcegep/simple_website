@@ -69,6 +69,8 @@ export default function HistoriquePage() {
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
+            <a href="recommandation">Recommandation</a>
+     
           </nav>
         </div>
       </header>
