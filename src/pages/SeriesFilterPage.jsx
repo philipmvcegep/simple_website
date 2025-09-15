@@ -17,7 +17,7 @@ export default function SeriesFilterPage() {
   const [series, setSeries] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [activeGenres, setActiveGenres] = useState([]);
-  const [maxEpisodes, setMaxEpisodes] = useState(50); // 🔥 par défaut 50
+  const [maxEpisodes, setMaxEpisodes] = useState(50); 
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -45,10 +45,8 @@ export default function SeriesFilterPage() {
     fetchSeries();
   }, []);
 
-  // listes uniques
   const genres = [...new Set(series.map((s) => s.genre))];
 
-  // ajouter / enlever genres
   const addGenre = (genre) => {
     if (!activeGenres.includes(genre)) setActiveGenres([...activeGenres, genre]);
   };
@@ -56,14 +54,12 @@ export default function SeriesFilterPage() {
     setActiveGenres(activeGenres.filter((g) => g !== genre));
   };
 
-  // reset filtres
   const resetFilters = () => {
     setActiveGenres([]);
     setMaxEpisodes(50);
     setSearchName("");
   };
 
-  // filtre
   const filteredSeries = series.filter((serie) => {
     const matchSearch = serie.title?.toLowerCase().includes(searchName.toLowerCase());
     const matchGenres = activeGenres.length === 0 || activeGenres.includes(serie.genre);
@@ -74,7 +70,6 @@ export default function SeriesFilterPage() {
 
   return (
     <div className="series-page-container">
-      {/* navbar */}
       <header className="navbar">
         <div className="navbar-left">
           <h1 className="logo" style={{ color: 'red' }}>Series</h1>
