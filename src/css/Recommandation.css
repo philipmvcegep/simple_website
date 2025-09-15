@@ -1,0 +1,8 @@
+.main-recommandation{
+    background-color: black;
+}
+
+.main-recommandation, h2{
+    color: white;
+    text-align: center;
+}
