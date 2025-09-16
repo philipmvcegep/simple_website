@@ -3,7 +3,7 @@ import Accueil from "./pages/Accueil";
 import Footer from "./pages/Footer";
 import SeriesFilterPage from "./pages/SeriesFilterPage";
 import Historique from "./pages/Historique";
-import Recommandation from "./pages/Recommandation";
+//import Recommandation from "./pages/Recommandation";
 import Page404 from "./pages/Page404";
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
         <Route path="/" element={<Accueil />} />
         <Route path="/series" element={<SeriesFilterPage />} />
         <Route path="/historique" element={<Historique />} />
-        <Route path="/recommandation"element={<Recommandation/>}/>
-        <Route path="*" element={<Page404 />} />
+{/*         <Route path="/recommandation"element={<Recommandation/>}/>
+ */}        <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer/>
       </div>
