@@ -17,6 +17,8 @@ export default function SeriesFilterPage() {
   const [series, setSeries] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [activeGenres, setActiveGenres] = useState([]);
+  const [maxEpisodes, setMaxEpisodes] = useState(50); 
+
   const [errorMsg, setErrorMsg] = useState("");
 
   const imagesMap = {
@@ -34,7 +36,7 @@ export default function SeriesFilterPage() {
   useEffect(() => {
     const fetchSeries = async () => {
       try {
-        const res = await axios.get(API);
+        const res = await axios.get(`${API}/search`);
         setSeries(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setErrorMsg("Impossible de charger la liste des séries.");
@@ -52,10 +54,18 @@ export default function SeriesFilterPage() {
     setActiveGenres(activeGenres.filter((g) => g !== genre));
   };
 
+  const resetFilters = () => {
+    setActiveGenres([]);
+    setMaxEpisodes(50);
+    setSearchName("");
+  };
+
   const filteredSeries = series.filter((serie) => {
     const matchSearch = serie.title?.toLowerCase().includes(searchName.toLowerCase());
     const matchGenres = activeGenres.length === 0 || activeGenres.includes(serie.genre);
-    return matchSearch && matchGenres;
+    const matchNbEpisode = serie.nbEpisodes <= maxEpisodes;
+
+    return matchSearch && matchGenres && matchNbEpisode;
   });
 
   return (
@@ -67,8 +77,6 @@ export default function SeriesFilterPage() {
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
-            <a href="recommandation">Recommandation</a>
-
           </nav>
         </div>
         <div className="navbar-right">
@@ -85,18 +93,34 @@ export default function SeriesFilterPage() {
       <div className="filter-layout">
         <aside className="filters">
           <h3 style={{ color: 'red' }}>Filtres de recherche</h3>
+
           <div className="genre-buttons">
             {genres.map((genre) => (
               <button
                 key={genre}
-                className="btn-genre"
+                className={`btn-genre ${activeGenres.includes(genre) ? "active" : ""}`}
                 onClick={() => addGenre(genre)}
               >
                 {genre}
               </button>
             ))}
           </div>
-          <div className="active-genres">
+
+          <div className="episode-slider">
+            <label style={{ color: "black" }}>
+              Nombre d'épisodes : <span style={{ color: "white" }}>{maxEpisodes}</span>
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="50"
+              value={maxEpisodes}
+              onChange={(e) => setMaxEpisodes(parseInt(e.target.value))}
+              className="slider"
+            />
+          </div>
+
+          <div className="active-filters">
             {activeGenres.map((genre) => (
               <span 
                 key={genre}
@@ -107,6 +131,10 @@ export default function SeriesFilterPage() {
               </span>
             ))}
           </div>
+
+          <button className="btn-reset" onClick={resetFilters}>
+            Réinitialiser les filtres
+          </button>
         </aside>
 
         <main className="series-list">
@@ -134,8 +162,6 @@ export default function SeriesFilterPage() {
           )}
         </main>
       </div>
-
-    
     </div>
   );
 }
