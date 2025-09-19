@@ -1,16 +1,14 @@
-import React, { useState } from "react";
 import "../css/Accueil.css";
-import { Carousel } from "react-bootstrap";
+import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
 
 import breaking from "../assets/images/breaking.jpg";
-import family from "../assets/images/family.jpg";
-import dark from '../assets/images/dark.jpg';
-
 
 export default function Accueil() {
+  const [isOpenVideo, setIsOpenVide] = useState(false);
 
+  // Composant Accueil avec navigation, sections de contenu et  vidéo
   return (
     <div className="accueil-container">
       <header className="navbar">
@@ -23,28 +21,40 @@ export default function Accueil() {
             <a href="recommandation">Recommandation</a>
           </nav>
         </div>
-
       </header>
-
       <main className="main-content">
         <h2 style={{ fontFamily: 'Arial Black' }}>Bienvenue sur Series</h2>
         <p style={{ color: 'Red', fontFamily: 'Arial Black' }}>Découvrez vos films et séries préférés!</p>
       </main>
 
-      <div>
-        <Carousel>
-          <Carousel.Item>
-            <img className="d-block w-100" src={breaking} alt="Breaking Bad" />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={family} alt="family secrets" />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img className="d-block w-100" src={dark} alt="dark" />
-          </Carousel.Item>
-        </Carousel>
+      <div className="images-section">
+        <img src={breaking} alt="Breaking Bad" className="breaking" />
+        <div className="info-section">
+          <h2>Breaking Bad</h2>
+          <p>
+            Une série culte où un professeur de chimie devient l’un des plus grands barons de la drogue.
+          </p>
+          <button className="watch-btn" onClick={() => setIsOpenVide(true)}>
+            Regarder maintenant
+          </button>
+        </div>
       </div>
 
+      {isOpenVideo && (
+        <div className="modal-overlay" onClick={() => setIsOpenVide(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close-btn" onClick={() => setIsOpenVide(false)}>✕</span>
+            <iframe
+              width="900"
+              height="600"
+              src="https://www.youtube.com/embed/HhesaQXLuRY"
+              title="Breaking Bad Trailer"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
 
       <div className="bibliotheque">
         <h2 style={{ color: 'Red' }}>Populaires</h2>
@@ -57,10 +67,10 @@ export default function Accueil() {
           ))}
         </div>
       </div>
-      <hr className="hr hr-blurry" />
+      <hr className="hr-biblio" />
 
       <div className="bibliotheque">
-        <h2 >Séries</h2>
+        <h2>Séries</h2>
         <div className="grille">
           {seriesSuspense.map((serie) => (
             <div key={serie.id} className="carte">
@@ -70,7 +80,7 @@ export default function Accueil() {
           ))}
         </div>
       </div>
-      <hr className="hr hr-blurry" />
+      <hr className="hr-biblio" />
 
       <div className="bibliotheque">
         <h2 style={{ color: 'Red' }}>Comédies</h2>

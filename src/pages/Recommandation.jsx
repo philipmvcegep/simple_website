@@ -11,7 +11,7 @@ export default function Recommandation() {
   const [loadingUsers, setLoadingUsers] = useState(false);
   const [loadingRecs, setLoadingRecs] = useState(false);
   const [error, setError] = useState("");
-
+  // Récupération de la liste des utilisateurs au chargement du composant
   useEffect(() => {
     const fetchUsers = async () => {
       setLoadingUsers(true);
@@ -28,6 +28,7 @@ export default function Recommandation() {
     fetchUsers();
   }, []);
 
+  // Chargement des recommandations pour l'utilisateur sélectionné
   const handleLoadRecommendations = async (user) => {
     setSelectedUser(user);
     setRecommendations([]);
@@ -42,12 +43,12 @@ export default function Recommandation() {
       setLoadingRecs(false);
     }
   };
-
+  // Filtrage des utilisateurs en fonction de la recherche
   const filtered = users.filter((u) =>
     (u.name || "").toLowerCase().includes(search.toLowerCase()) ||
     (u.email || "").toLowerCase().includes(search.toLowerCase())
   );
-
+  // Rendu du composant Recommandation avec navigation, liste d'utilisateurs et recommandations
   return (
     <div className="accueil-container">
       <header className="navbar">
@@ -61,11 +62,10 @@ export default function Recommandation() {
           </nav>
         </div>
       </header>
-
       <div className="reco-page">
         <h1 style={{ color: "Red", font: "Arial Black" }}>Recommandations de séries</h1>
 
-        <div className="panel row">
+        <div className="row">
           <div className="col users">
             <input
               type="text"
@@ -129,7 +129,8 @@ export default function Recommandation() {
                       {recommendations.map((r) => {
                         const score = r.note != null ? r.note / 10 : 0;
                         return (
-                          <tr key={r.seriesId}>                            <td>{r.title}</td>
+                          <tr key={r.seriesId}>
+                            <td>{r.title}</td>
                             <td>{r.genre || "-"}</td>
                             <td>{r.note != null ? r.note : "-"}</td>
                             <td>{(score * 100).toFixed(1)}%</td>

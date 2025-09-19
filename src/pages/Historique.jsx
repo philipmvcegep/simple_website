@@ -31,7 +31,7 @@ export default function HistoriquePage() {
     "High School": hs,
     "Super Action": superaction,
   };
-
+// Récupération des utilisateurs au chargement du composant
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -43,7 +43,7 @@ export default function HistoriquePage() {
     };
     fetchUsers();
   }, []);
-
+// Chargement de l'historique d'un utilisateur sélectionné
   const loadHistory = async (id) => {
     try {
       const res = await axios.get(`${API}/${id}/history`);
@@ -53,13 +53,13 @@ export default function HistoriquePage() {
       setErrorMsg("Impossible de charger l'historique.");
     }
   };
-
+// Filtrage des utilisateurs en fonction de la recherche
   const filteredUsers = users.filter(
     (u) =>
       u.name?.toLowerCase().includes(search.toLowerCase()) ||
       u.email?.toLowerCase().includes(search.toLowerCase())
   );
-
+// Rendu du composant HistoriquePage et navigation
   return (
     <div className="series-page">
       <header className="navbar">
