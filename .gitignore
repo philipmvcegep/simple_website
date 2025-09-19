@@ -22,10 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-=======
 
 
 # Ignorer le node_modules
 node_modules/
->>>>>>> feature/frontend-lab2
