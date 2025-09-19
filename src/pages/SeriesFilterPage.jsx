@@ -77,6 +77,8 @@ export default function SeriesFilterPage() {
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
+            <a href="/recommandation">Recommandation</a>
+
           </nav>
         </div>
         <div className="navbar-right">
