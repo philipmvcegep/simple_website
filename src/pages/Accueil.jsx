@@ -3,13 +3,11 @@ import "../css/Accueil.css";
 import { Carousel } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
- 
 import breaking from "../assets/images/breaking.jpg";
 import family from "../assets/images/family.jpg";
-import dark from "../assets/images/dark.jpg";
+import dark from '../assets/images/dark.jpg';
  
 export default function Accueil() {
-  //const [search, setSearch] = useState("");
  
   return (
     <div className="accueil-container">
@@ -23,16 +21,7 @@ export default function Accueil() {
             <a href="recommandation">Recommandation</a>
           </nav>
         </div>
-        {/* <div className="navbar-right">
-          <input
-            type="text"
-            placeholder="Rechercher..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="search-input"
-          />
-          <button className="search-btn">Recherche</button>
-        </div> */}
+    
       </header>
  
       <main className="main-content">
