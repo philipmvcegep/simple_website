@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import "../css/Accueil.css";
 import { Carousel } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
+
 import breaking from "../assets/images/breaking.jpg";
 import family from "../assets/images/family.jpg";
 import dark from '../assets/images/dark.jpg';
- 
+
+
 export default function Accueil() {
- 
+
   return (
     <div className="accueil-container">
       <header className="navbar">
         <div className="navbar-left">
-          <h1 style={{color:'red'}}className="logo">Series</h1>
+          <h1 style={{ color: 'red' }} className="logo">Series</h1>
           <nav className="nav-links">
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
@@ -21,14 +23,14 @@ export default function Accueil() {
             <a href="recommandation">Recommandation</a>
           </nav>
         </div>
-    
+
       </header>
- 
+
       <main className="main-content">
-        <h2 style={{fontFamily: 'Arial Black'}}>Bienvenue sur Series</h2>
-        <p style={{ color: 'Red', fontFamily: 'Arial Black'}}>Découvrez vos films et séries préférés!</p>
+        <h2 style={{ fontFamily: 'Arial Black' }}>Bienvenue sur Series</h2>
+        <p style={{ color: 'Red', fontFamily: 'Arial Black' }}>Découvrez vos films et séries préférés!</p>
       </main>
- 
+
       <div>
         <Carousel>
           <Carousel.Item>
@@ -42,9 +44,10 @@ export default function Accueil() {
           </Carousel.Item>
         </Carousel>
       </div>
- 
+
+
       <div className="bibliotheque">
-        <h2 style={{ color: 'Red'}}>Populaires</h2>
+        <h2 style={{ color: 'Red' }}>Populaires</h2>
         <div className="grille">
           {filmsPopulaires.map((film) => (
             <div key={film.id} className="carte">
@@ -54,8 +57,8 @@ export default function Accueil() {
           ))}
         </div>
       </div>
-  <hr className="hr hr-blurry" />
- 
+      <hr className="hr hr-blurry" />
+
       <div className="bibliotheque">
         <h2 >Séries</h2>
         <div className="grille">
@@ -67,10 +70,10 @@ export default function Accueil() {
           ))}
         </div>
       </div>
-        <hr className="hr hr-blurry" />
- 
+      <hr className="hr hr-blurry" />
+
       <div className="bibliotheque">
-        <h2 style={{ color: 'Red'}}>Comédies</h2>
+        <h2 style={{ color: 'Red' }}>Comédies</h2>
         <div className="grille">
           {comedies.map((comedy) => (
             <div key={comedy.id} className="carte">
