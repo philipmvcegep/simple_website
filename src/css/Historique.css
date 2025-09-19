@@ -1,0 +1,115 @@
+.series-page {
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background-color: #000; 
+  color: #fff; 
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #000;
+  flex-wrap: wrap;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .nav-links a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar .nav-links a:hover {
+  color: #912d2d;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  margin: 15px 0;
+  border-radius: 6px;
+  border: 1px solid #912d2d;
+  background-color: #111;
+  color: #fff;
+}
+
+.search-input::placeholder {
+  color: #f3f3f3;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.table-dark {
+  background-color: #b42b2b;
+}
+
+.table-dark th {
+  background-color: #111;
+  color: #fff;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #1b1b1b;
+}
+
+.series-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.serie-card {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  border-bottom: 3px solid #912d2d;
+  background-color: #222;
+  border-radius: 6px;
+}
+
+.poster img {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.info h3 {
+  margin: 0;
+  margin-bottom: 5px;
+  color: #e63946;
+}
+
+.info p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+}
