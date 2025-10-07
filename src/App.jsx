@@ -4,6 +4,7 @@ import Footer from "./pages/Footer";
 import SeriesFilterPage from "./pages/SeriesFilterPage";
 import Historique from "./pages/Historique";
 import Recommandation from "./pages/Recommandation";
+import Connexion from "./pages/Connexion";
 import Page404 from "./pages/Page404";
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/series" element={<SeriesFilterPage />} />
           <Route path="/historique" element={<Historique />} />
           <Route path="/recommandation" element={<Recommandation />} />
+          <Route path="/connexion" element={<Connexion/>} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />

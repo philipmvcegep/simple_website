@@ -1,0 +1,27 @@
+
+.maindivcontent {
+  padding: 4rem 16%;
+}
+
+.maindivcontent h1 {
+  margin-bottom: 2rem;
+}
+
+.mainbutton {
+  background-color: var(--forest_green);
+  color: var(--beige);
+  border: none;
+  border-radius: var(--innerborder);
+  padding: 0.5rem;
+  width: 12rem;
+  text-align: center;
+  transition-timing-function: ease-in-out;
+  transition: 0.5s;
+}
+
+.mainbutton:hover {
+  background-color: var(--lime_green);
+  color: var(--forest_green);
+  box-shadow: 0.2rem 0.2rem var(--forest_green);
+  cursor: pointer;
+}

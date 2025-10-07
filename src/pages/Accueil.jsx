@@ -18,7 +18,9 @@ export default function Accueil() {
             <a href="/">Accueil</a>
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
-            <a href="recommandation">Recommandation</a>
+            <a href="/recommandation">Recommandation</a>
+            <a href="/connexion">Connexion</a>
+
           </nav>
         </div>
       </header>

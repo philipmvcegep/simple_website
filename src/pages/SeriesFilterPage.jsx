@@ -17,10 +17,10 @@ export default function SeriesFilterPage() {
   const [series, setSeries] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [activeGenres, setActiveGenres] = useState([]);
-  const [maxEpisodes, setMaxEpisodes] = useState(50); 
+  const [maxEpisodes, setMaxEpisodes] = useState(50);
 
   const [errorMsg, setErrorMsg] = useState("");
-// Mapping des titres de séries aux images correspondantes
+  // Mapping des titres de séries aux images correspondantes
   const imagesMap = {
     "Breaking Bad": breaking,
     "hah": hah,
@@ -32,7 +32,7 @@ export default function SeriesFilterPage() {
     "High School": hs,
     "Super Action": superaction,
   };
-// Récupération de la liste des séries au chargement du composant
+  // Récupération de la liste des séries au chargement du composant
   useEffect(() => {
     const fetchSeries = async () => {
       try {
@@ -44,7 +44,7 @@ export default function SeriesFilterPage() {
     };
     fetchSeries();
   }, []);
-// Extraction des genres uniques pour les filtres
+  // Extraction des genres uniques pour les filtres
   const genres = [...new Set(series.map((s) => s.genre))];
 
   const addGenre = (genre) => {
@@ -53,13 +53,13 @@ export default function SeriesFilterPage() {
   const removeGenre = (genre) => {
     setActiveGenres(activeGenres.filter((g) => g !== genre));
   };
-// Réinitialisation des filtres
+  // Réinitialisation des filtres
   const resetFilters = () => {
     setActiveGenres([]);
     setMaxEpisodes(50);
     setSearchName("");
   };
-// Filtrage des séries en fonction des critères sélectionnés
+  // Filtrage des séries en fonction des critères sélectionnés
   const filteredSeries = series.filter((serie) => {
     const matchSearch = serie.title?.toLowerCase().includes(searchName.toLowerCase());
     const matchGenres = activeGenres.length === 0 || activeGenres.includes(serie.genre);
@@ -67,7 +67,7 @@ export default function SeriesFilterPage() {
 
     return matchSearch && matchGenres && matchNbEpisode;
   });
-// Rendu du composant SeriesFilterPage avec navigation, filtres et liste de séries
+  // Rendu du composant SeriesFilterPage avec navigation, filtres et liste de séries
   return (
     <div className="series-page-container">
       <header className="navbar">
@@ -78,6 +78,7 @@ export default function SeriesFilterPage() {
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
             <a href="/recommandation">Recommandation</a>
+            <a href="/connexion">Connexion</a>
 
           </nav>
         </div>
@@ -124,7 +125,7 @@ export default function SeriesFilterPage() {
 
           <div className="active-filters">
             {activeGenres.map((genre) => (
-              <span 
+              <span
                 key={genre}
                 className="badge"
                 onClick={() => removeGenre(genre)}
@@ -145,9 +146,9 @@ export default function SeriesFilterPage() {
             filteredSeries.map((serie) => (
               <div key={serie.id} className="serie-card">
                 <div className="poster">
-                  <img 
-                    src={imagesMap[serie.title]} 
-                    alt={serie.title} 
+                  <img
+                    src={imagesMap[serie.title]}
+                    alt={serie.title}
                   />
                 </div>
                 <div className="info">

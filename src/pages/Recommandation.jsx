@@ -59,6 +59,8 @@ export default function Recommandation() {
             <a href="/series">Séries</a>
             <a href="/historique">Historique</a>
             <a href="/recommandation">Recommandation</a>
+            <a href="/connexion">Connexion</a>
+
           </nav>
         </div>
       </header>
