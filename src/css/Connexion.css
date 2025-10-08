@@ -1,27 +1,90 @@
-
 .maindivcontent {
-  padding: 4rem 16%;
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  
+  background-color: #1a1a1a;
+  border: 2px solid #a1262a; 
+  border-radius: 16px;
+  padding: 40px 50px;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+  width: 380px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.maindivcontent h1 {
-  margin-bottom: 2rem;
+.maindivcontent:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+  box-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #000000;
+  flex-wrap: wrap;
+}
+
+h1 {
+  color: #e50914;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+form div {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  color: #ccc;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #111;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: #500e11;
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
 }
 
 .mainbutton {
-  background-color: var(--forest_green);
-  color: var(--beige);
+  width: 100%;
+  padding: 12px;
+  background-color: #7a1a1f;
+  color: white;
   border: none;
-  border-radius: var(--innerborder);
-  padding: 0.5rem;
-  width: 12rem;
-  text-align: center;
-  transition-timing-function: ease-in-out;
-  transition: 0.5s;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .mainbutton:hover {
-  background-color: var(--lime_green);
-  color: var(--forest_green);
-  box-shadow: 0.2rem 0.2rem var(--forest_green);
-  cursor: pointer;
+  background-color: #b0060f;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+}
+
+p {
+  margin-top: 10px;
+  color: #ff4d4d;
+  font-weight: 600;
 }

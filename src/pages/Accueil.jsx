@@ -1,11 +1,19 @@
 import "../css/Accueil.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
+import { Link } from "react-router-dom";
 
 import breaking from "../assets/images/breaking.jpg";
 
 export default function Accueil() {
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    if (name) {
+      alert(`Bienvenue ${name} !`);
+      localStorage.removeItem("name");
+    }
+  })
   const [isOpenVideo, setIsOpenVide] = useState(false);
 
   // Composant Accueil avec navigation, sections de contenu et  vidéo
@@ -15,12 +23,14 @@ export default function Accueil() {
         <div className="navbar-left">
           <h1 style={{ color: 'red' }} className="logo">Series</h1>
           <nav className="nav-links">
-            <a href="/">Accueil</a>
-            <a href="/series">Séries</a>
-            <a href="/historique">Historique</a>
-            <a href="/recommandation">Recommandation</a>
-            <a href="/connexion">Connexion</a>
-
+            <Link to="/">Accueil</Link>
+            <Link to="/series">Séries</Link>
+            <Link to="/historique">Historique</Link>
+            <Link to="/recommandation">Recommandation</Link>
+            {localStorage.getItem("name") && (
+              <Link to="/evaluation">Évaluation</Link>
+            )}
+            <Link to="/connexion">Connexion</Link>
           </nav>
         </div>
       </header>

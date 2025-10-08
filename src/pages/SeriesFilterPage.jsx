@@ -10,6 +10,7 @@ import family1 from "../assets/images/family1.jpg";
 import hah from "../assets/images/hah.jpg";
 import hs from "../assets/images/hs.jpg";
 import superaction from "../assets/images/superaction.jpg";
+import { Link } from "react-router-dom";
 
 export default function SeriesFilterPage() {
   const API = "http://localhost:8585/series";
@@ -74,12 +75,14 @@ export default function SeriesFilterPage() {
         <div className="navbar-left">
           <h1 className="logo" style={{ color: 'red' }}>Series</h1>
           <nav className="nav-links">
-            <a href="/">Accueil</a>
-            <a href="/series">Séries</a>
-            <a href="/historique">Historique</a>
-            <a href="/recommandation">Recommandation</a>
-            <a href="/connexion">Connexion</a>
-
+            <Link to="/">Accueil</Link>
+            <Link to="/series">Séries</Link>
+            <Link to="/historique">Historique</Link>
+            <Link to="/recommandation">Recommandation</Link>
+            {localStorage.getItem("name") && (
+              <Link to="/evaluation">Évaluation</Link>
+            )}
+            <Link to="/connexion">Connexion</Link>
           </nav>
         </div>
         <div className="navbar-right">
