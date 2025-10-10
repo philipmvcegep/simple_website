@@ -5,7 +5,7 @@ import SeriesFilterPage from "./pages/SeriesFilterPage";
 import Historique from "./pages/Historique";
 import Recommandation from "./pages/Recommandation";
 import Connexion from "./pages/Connexion";
-import Evaluation from "./pages/Evaluations";
+import Evaluations from "./pages/Evaluations";
 import PrivateRoute from "./pages/PrivateRoute";
 import Page404 from "./pages/Page404";
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route path="/historique" element={<Historique />} />
           <Route path="/recommandation" element={<Recommandation />} />
           <Route path="/connexion" element={<Connexion />} />
-          <Route path="/evaluation" element={<PrivateRoute> <Evaluation /> </PrivateRoute>} />
+          <Route path="/evaluation" element={<PrivateRoute><Evaluations /></PrivateRoute>} />
           <Route path="*" element={<Page404 />} />
         </Routes>
 

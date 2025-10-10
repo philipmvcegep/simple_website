@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function Connexion() {
+    
     const [userData, setUserData] = useState({
         courriel: '',
         motDePasse: ''
@@ -31,8 +32,12 @@ export default function Connexion() {
             console.log(response.data);
 
             if (response.data.success) {
-                localStorage.setItem("name", response.data.name)
-                navigate("/");
+                localStorage.setItem("name", response.data.name);
+                localStorage.setItem("id", response.data.id);
+                localStorage.setItem("token", response.data.token);
+
+                localStorage.removeItem("hasWelcomed");
+                navigate("/evaluation");
             } else {
                 setError(response.data.message);
             }
@@ -56,6 +61,7 @@ export default function Connexion() {
                             <Link to="/evaluation">Évaluation</Link>
                         )}
                         <Link to="/connexion">Connexion</Link>
+                    
                     </nav>
                 </div>
             </header>

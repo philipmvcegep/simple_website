@@ -6,53 +6,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* === NAVBAR === */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #000000;
-  flex-wrap: wrap;
-}
-
-.logo {
-  font-family: 'Arial Black', sans-serif;
-  font-size: 40px;
-  color: #ffffff;
-}
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
 .search-btn {
   padding: 6px 12px;
   border: none;

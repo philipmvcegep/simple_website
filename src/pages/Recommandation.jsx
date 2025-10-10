@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/Recommandation.css";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
 export default function Recommandation() {
   const API_BASE = "http://localhost:8585/persons";
   const [users, setUsers] = useState([]);
@@ -52,21 +52,8 @@ export default function Recommandation() {
   // Rendu du composant Recommandation avec navigation, liste d'utilisateurs et recommandations
   return (
     <div className="accueil-container">
-      <header className="navbar">
-        <div className="navbar-left">
-          <h1 style={{ color: "red" }} className="logo">Series</h1>
-          <nav className="nav-links">
-            <Link to="/">Accueil</Link>
-            <Link to="/series">Séries</Link>
-            <Link to="/historique">Historique</Link>
-            <Link to="/recommandation">Recommandation</Link>
-            {localStorage.getItem("name") && (
-              <Link to="/evaluation">Évaluation</Link>
-            )}
-            <Link to="/connexion">Connexion</Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
+
       <div className="reco-page">
         <h1 style={{ color: "Red", font: "Arial Black" }}>Recommandations de séries</h1>
 

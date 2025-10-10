@@ -1,39 +1,19 @@
 import "../css/Accueil.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
 import { Link } from "react-router-dom";
-
+import Navbar from '../pages/Navbar';
 import breaking from "../assets/images/breaking.jpg";
 
 export default function Accueil() {
-  useEffect(() => {
-    const name = localStorage.getItem("name");
-    if (name) {
-      alert(`Bienvenue ${name} !`);
-      localStorage.removeItem("name");
-    }
-  })
+
   const [isOpenVideo, setIsOpenVide] = useState(false);
 
   // Composant Accueil avec navigation, sections de contenu et  vidéo
   return (
     <div className="accueil-container">
-      <header className="navbar">
-        <div className="navbar-left">
-          <h1 style={{ color: 'red' }} className="logo">Series</h1>
-          <nav className="nav-links">
-            <Link to="/">Accueil</Link>
-            <Link to="/series">Séries</Link>
-            <Link to="/historique">Historique</Link>
-            <Link to="/recommandation">Recommandation</Link>
-            {localStorage.getItem("name") && (
-              <Link to="/evaluation">Évaluation</Link>
-            )}
-            <Link to="/connexion">Connexion</Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
       <main className="main-content">
         <h2 style={{ fontFamily: 'Arial Black' }}>Bienvenue sur Series</h2>
         <p style={{ color: 'Red', fontFamily: 'Arial Black' }}>Découvrez vos films et séries préférés!</p>

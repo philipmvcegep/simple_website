@@ -11,7 +11,7 @@ import hah from "../assets/images/hah.jpg";
 import hs from "../assets/images/hs.jpg";
 import superaction from "../assets/images/superaction.jpg";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
 export default function SeriesFilterPage() {
   const API = "http://localhost:8585/series";
 
@@ -71,30 +71,17 @@ export default function SeriesFilterPage() {
   // Rendu du composant SeriesFilterPage avec navigation, filtres et liste de séries
   return (
     <div className="series-page-container">
-      <header className="navbar">
-        <div className="navbar-left">
-          <h1 className="logo" style={{ color: 'red' }}>Series</h1>
-          <nav className="nav-links">
-            <Link to="/">Accueil</Link>
-            <Link to="/series">Séries</Link>
-            <Link to="/historique">Historique</Link>
-            <Link to="/recommandation">Recommandation</Link>
-            {localStorage.getItem("name") && (
-              <Link to="/evaluation">Évaluation</Link>
-            )}
-            <Link to="/connexion">Connexion</Link>
-          </nav>
-        </div>
-        <div className="navbar-right">
-          <input
-            type="text"
-            placeholder="Rechercher..."
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
-            className="search-input"
-          />
-        </div>
-      </header>
+      <Navbar />
+
+      <div className="navbar-right">
+        <input
+          type="text"
+          placeholder="Rechercher..."
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+          className="search-input"
+        />
+      </div>
 
       <div className="filter-layout">
         <aside className="filters">
