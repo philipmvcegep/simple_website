@@ -1,10 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import '../css/Navbar.css';
 
 export default function Navbar() {
-  const [isLogged, setIsLogged] = useState(false);
-  const location = useLocation();
+  const [isLogged, setIsLogged] = useState(!!localStorage.getItem("token"));
 
   const handleLogout = () => {
     localStorage.clear();
@@ -13,12 +12,12 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsLogged(!!localStorage.getItem("token"));
-  }, [location]); // détecte chaque changement de route
+  }, []);
 
   return (
     <header className="navbar">
       <div className="navbar-left">
-        <h1 className="logo" style={{ color: 'red' }}>Series</h1>
+        <h1 className="logo">Series</h1>
         <nav className="nav-links">
           <Link to="/">Accueil</Link>
           <Link to="/series">Séries</Link>
@@ -26,10 +25,16 @@ export default function Navbar() {
           <Link to="/recommandation">Recommandation</Link>
           {isLogged && <Link to="/evaluation">Évaluation</Link>}
           {!isLogged && <Link to="/connexion">Connexion</Link>}
-          {isLogged && (
-            <button onClick={handleLogout} className="logout-btn">Se déconnecter</button>
-          )}
         </nav>
+      </div>
+
+      <div className="navbar-right">
+        {!isLogged && (
+          <Link to="/creationCompte" className="creation-link">Création de compte</Link>
+        )}
+        {isLogged && (
+          <button onClick={handleLogout} className="logout-btn">Se déconnecter</button>
+        )}
       </div>
     </header>
   );

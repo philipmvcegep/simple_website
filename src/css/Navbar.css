@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* gauche à gauche, droite à droite */
   align-items: center;
   padding: 15px 30px;
   background-color: #000;
@@ -32,8 +32,15 @@
   align-items: center;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .nav-links a,
-.nav-links button {
+.nav-links button,
+.creation-link {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -46,7 +53,8 @@
 }
 
 .nav-links a:hover,
-.nav-links button:hover {
+.nav-links button:hover,
+.creation-link:hover {
   background-color: #222;
   color: #ff5555;
 }
@@ -78,5 +86,11 @@
 
   .nav-links {
     gap: 10px;
+  }
+
+  .navbar-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
   }
 }

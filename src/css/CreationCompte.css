@@ -1,0 +1,102 @@
+.creation-page{
+    background-color: #000;
+    padding: 40px;
+    min-height: 95vh;
+    background-color: #000;
+}
+.creation-content {
+    width: 360px;
+    margin: 60px auto 0 auto; 
+    background-color: #111;
+    padding: 25px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #630e0e;
+    box-shadow: 0 0 15px rgba(94, 12, 12, 0.2);
+}
+
+.creation-content h1 {
+    color: #9c3535;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 26px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #740707;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: #222;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    background-color: #333;
+    border-left: 4px solid #5e0c0c;
+}
+
+button {
+    padding: 12px;
+    width: 100%;
+    background-color: #680b0b;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #5a0a0a;
+    color: #000;
+}
+
+.error-msg {
+    color: #ff5555;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-msg {
+    color: #206920;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.creation-content a {
+    color: #970d0d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.creation-content a:hover {
+    color: #680b0b;
+}
+
+@media (max-width: 768px) {
+    .creation-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
